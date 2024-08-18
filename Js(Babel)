@@ -1,0 +1,144 @@
+https://cdn.dribbble.com/users/260486/screenshots/5383121/attachments/1166907/cryptowallet_dribbble-attachment.png
+
+class Navigation extends React.Component {
+  render() { return (
+    <nav>
+      <div class="icon-menu">
+        <i class="material-icons">menu</i>
+      </div>
+      <div class="title">Current Balance</div>
+      <div class="icon-notification">
+        <i class="material-icons">notifications</i>
+      </div>
+    </nav>
+  );}
+}
+
+class Wallet extends React.Component {
+  render() { return (
+    <div class="wallet">
+      <p class="wallet-data"> {this.props.balance} </p>
+      <p class="wallet-comparison ">
+        <span class="success">{this.props.tracking}</span> in last 7 days.
+      </p>
+    </div>
+  );}
+}
+
+class Graph extends React.Component {
+  componentDidMount() {
+    this.Graph = document.getElementById('graphChart');
+    this.chart = new Chart(this.Graph, {
+      type: 'line',
+      data: {
+          labels: ["", "", "", "", "", ""],
+          datasets: [{
+              data: [9, 6, 8, 5, 6, 10],
+              backgroundColor: ['#151621',],
+              borderColor: [ '#51a2a4',],
+              borderWidth: 3
+          }]
+      },
+      options: {
+        labels: {display: false},
+        legend: {display: false},
+        tooltips: { enabled: false},
+        elements: { 
+          point: { radius: 0 },
+          line: { tension: 0 },
+        },
+        scales: {
+          yAxes: [{ 
+            display: false,
+            ticks: {
+              beginAtZero:true
+            }
+          }],
+          xAxes: [{ display: false }]
+        }
+      }
+    });
+    //end of chart data
+  }
+  
+  render() { return (
+    <canvas  id="graphChart"/>
+  );}
+}
+
+class Cryptoitem extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  
+  render () { return (
+    <div class="crypto-item">
+      <p> {this.props.currency} </p>
+      <p class="gray"> {this.props.currencyValue} </p>
+      <p className={'bold' + ' ' + (this.props.monetaryValue > 0 ? 'success' : 'error')}> {this.props.monetaryValue} </p>
+    </div>
+  )}
+}
+class Cryptolist extends React.Component {
+  constructor(props){
+    super(props);
+    
+    this.criptocoinsObject = [];
+    
+    this.cryptocoins = [
+      {
+        name: 'Bitcoin',
+        value: 0.123,
+        monetaryValue: 29.43
+      },
+      {
+        name: 'Litecoin',
+        value: 2.4,
+        monetaryValue: -40.14
+      },
+      {
+        name: 'Ripple',
+        value: 41,
+        monetaryValue: 45.12
+      },
+      {
+        name: 'Stellar',
+        value: 14,
+        monetaryValue: 153.23
+      },      
+    ];
+    
+    this.cryptocoins.filter(coin => {
+      this.criptocoinsObject.push(
+        <Cryptoitem currency={coin.name} currencyValue={coin.value} monetaryValue={coin.monetaryValue}/>
+      );
+    })
+  }
+  
+  render() { return (
+    <div class="crypto-list">
+      {this.criptocoinsObject}
+    </div>
+  );}
+}
+
+class App extends React.Component { 
+  constructor(props){
+    super(props);
+    
+    this.balance = 2.547;
+    this.tracking = '+550$ (+21%)';
+  }
+  render () { 
+    return (
+      <div class="container"> 
+        <Navigation/>
+        <Wallet balance={this.balance} tracking={this.tracking}/>
+        <Graph/>
+        <p class="wallet-title">Wallet</p>
+        <Cryptolist/>
+      </div>);
+  } 
+};
+
+ReactDOM.render (<App/>, document.getElementById('app'));
