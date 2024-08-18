@@ -1,0 +1,122 @@
+https://cdn.dribbble.com/users/260486/screenshots/5383121/attachments/1166907/cryptowallet_dribbble-attachment.png
+
+// Variables Colors
+$background-top: #0e0e15
+$background-bottom: #151621
+$background-image: 'https://www.xmple.com/wallpaper/purple-gradient-blue-linear-1920x1080-c2-87cefa-da70d6-a-195-f-14.svg'
+$text: #ffffff
+$gray: #50525f
+$highlight-a: #51a2a4
+$highlight-b: #ae4144
+
+
+//Variable sizes
+
+
+
+//Material icons
+.material-icons 
+  font-family: 'Material Icons'
+  font-weight: normal
+  font-style: normal
+  font-size: 24px  /* Preferred icon size */
+  display: inline-block
+  line-height: 1
+  text-transform: none
+  letter-spacing: normal
+  word-wrap: normal
+  white-space: nowrap
+  direction: ltr
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale
+
+  /* Support for IE. */
+  font-feature-settings: 'liga'
+
+// Components
+Body
+  background: url($background-image)
+  color: $text
+  
+  .container
+    max-width: 500px
+    margin-bottom: 20px
+    margin-top: 20px
+    background: $background-top
+    padding: 20px 0 0
+    border-radius: 7px 7px 0 0
+    nav
+      margin-bottom: 15px
+      padding: 0 20px
+      display: flex
+      justify-content: space-between
+      align-items: center
+      
+      .icon
+        &-menu
+          
+        &-notification
+          
+      .title
+        text-align: center
+        width: calc(100% - 100px)
+          
+    .wallet-data
+      text-align: center
+      font-size: 4.5em
+      font-weight: 200
+      &:before
+        content: '$'
+        font-size: 0.35em
+        vertical-align: middle
+      
+    .wallet-comparison
+      text-align: center
+      font-size: 1em
+      
+    canvas#graphChart
+      width: 100%
+      display: block
+      
+    .crypto-item
+      background: #0b0b10
+      border-radius: 7px
+      width: 200px
+      padding: 10px
+      margin: 10px 20px
+      flex-grow: 1
+      p
+        margin: 0
+      
+    .crypto-list
+      background: $background-bottom
+      padding: 0 0 20px 0
+      display: flex
+      flex-wrap: wrap
+      
+    .wallet-title
+      background: $background-bottom
+      margin: 0
+      padding: 0 20px
+      display: block
+      
+      
+      
+    // Reusable scss
+    .bold
+      font-weight: 500
+      
+    .gray
+      color: $grey  
+      
+    .success
+      color: $highlight-a
+      
+    .error
+      color: $highlight-b
